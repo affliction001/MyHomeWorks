@@ -15,12 +15,12 @@ photo.src = images[0];
 let counter = 0;
 
 function handlerPrev() {
-  counter === 0 ? counter = 4 : counter--;
+  counter === 0 ? counter = (images.length - 1) : counter--;
   photo.src = images[counter];
 }
 
 function handlerNext() {
-  counter === 4 ? counter = 0 : counter++;
+  counter === (images.length - 1) ? counter = 0 : counter++;
   photo.src = images[counter];
 }
 

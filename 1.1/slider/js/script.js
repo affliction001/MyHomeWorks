@@ -9,9 +9,9 @@ let images = ['./i/airmax.png',
 let slider = document.getElementById('slider');
 let counter = 0;
 
-slider.src = images[4];
+slider.src = images[images.length - 1];
 
 setInterval(() => {
   slider.src = images[counter];
-  counter === 4 ? counter = 0 : counter++;
+  counter === (images.length - 1) ? counter = 0 : counter++;
 }, 5000);
