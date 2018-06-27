@@ -12,8 +12,8 @@ const stop = document.getElementsByClassName('stop');
 const back = document.getElementsByClassName('back');
 const next = document.getElementsByClassName('next');
 
-let pl = document.getElementsByClassName('fa-play');
-let pa = document.getElementsByClassName('fa-pause');
+const pl = document.getElementsByClassName('fa-play');
+const pa = document.getElementsByClassName('fa-pause');
 
 let songNumber = 0;
 player[0].src = songs[songNumber];
