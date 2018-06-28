@@ -12,9 +12,6 @@ const stop = document.getElementsByClassName('stop');
 const back = document.getElementsByClassName('back');
 const next = document.getElementsByClassName('next');
 
-const pl = document.getElementsByClassName('fa-play');
-const pa = document.getElementsByClassName('fa-pause');
-
 let songNumber = 0;
 player[0].src = songs[songNumber];
 
@@ -23,14 +20,10 @@ let status = false;
 play[0].onclick = () => {
   if (player[0].paused) {
     player[0].play();
-    pl[0].style.display = 'none';
-    pa[0].style.display = 'block';
     mediaplayer[0].classList.add('play');
     status = true;
   } else {
     player[0].pause();
-    pa[0].style.display = 'none';
-    pl[0].style.display = 'block';
     mediaplayer[0].classList.remove('play');
     status = false;
   }
@@ -39,8 +32,6 @@ play[0].onclick = () => {
 stop[0].onclick = () => {
   player[0].pause();
   player[0].currentTime = 0;
-  pa[0].style.display = 'none';
-  pl[0].style.display = 'block';
   mediaplayer[0].classList.remove('play');
   status = false;
 }
