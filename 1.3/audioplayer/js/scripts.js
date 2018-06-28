@@ -49,12 +49,16 @@ back[0].onclick = () => {
   songNumber !== 0 ? songNumber-- : songNumber = songs.length - 1;
   player[0].src = songs[songNumber];
   title[0].title = songs[songNumber].substring(6, songs[songNumber].length - 4);
-  if (status) player[0].play();
+  if (status) {
+  	player[0].play();
+  }
 }
 
 next[0].onclick = () => {
   songNumber !== songs.length - 1 ? songNumber++ : songNumber = 0;
   player[0].src = songs[songNumber];
   title[0].title = songs[songNumber].substring(6, songs[songNumber].length - 4);
-  if (status) player[0].play();
+  if (status) {
+  	player[0].play();
+  }
 }
