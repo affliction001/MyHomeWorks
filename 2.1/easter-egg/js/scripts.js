@@ -16,7 +16,7 @@ function showNavBar(event) {
   }
 }
 
-function easterEgg(event) {
+function findEasterEgg(event) {
   const secretCode = ['KeyY','KeyT','KeyN','KeyJ','KeyK','KeyJ','KeyU','KeyB','KeyZ'];
 
   if (event.code === secretCode[unlockStatus]) {
@@ -31,4 +31,4 @@ function easterEgg(event) {
 }
 
 document.addEventListener('keydown', showNavBar);
-document.addEventListener('keydown', easterEgg);
+document.addEventListener('keydown', findEasterEgg);
