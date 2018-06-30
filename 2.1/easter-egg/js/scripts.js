@@ -22,7 +22,7 @@ function findEasterEgg(event) {
   if (event.code === secretCode[unlockStatus]) {
     unlockStatus++;
 
-    if (unlockStatus === 9) {
+    if (unlockStatus === secretCode.length) {
       document.getElementsByClassName('secret')[0].classList.add('visible');
     }
   } else {
