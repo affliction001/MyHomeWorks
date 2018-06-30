@@ -1,5 +1,6 @@
 'use strict';
 
+const secretCode = ['KeyY','KeyT','KeyN','KeyJ','KeyK','KeyJ','KeyU','KeyB','KeyZ'];
 let unlockStatus = 0;
 
 function showNavBar(event) {
@@ -17,13 +18,11 @@ function showNavBar(event) {
 }
 
 function findEasterEgg(event) {
-  const secretCode = ['KeyY','KeyT','KeyN','KeyJ','KeyK','KeyJ','KeyU','KeyB','KeyZ'];
-
   if (event.code === secretCode[unlockStatus]) {
     unlockStatus++;
 
     if (unlockStatus === secretCode.length) {
-      document.getElementsByClassName('secret')[0].classList.add('visible');
+      document.getElementsByClassName('secret')[0].classList.toggle('visible');
     }
   } else {
     event.code === secretCode[0] ? unlockStatus = 1 : unlockStatus = 0;
