@@ -10,11 +10,12 @@ const content = document.querySelector('#content')
 let currencyList = '';
 
 const xhr = new XMLHttpRequest();
-xhr.open('GET', 'https://neto-api.herokuapp.com/currency');
-xhr.send();
+
 xhr.addEventListener('load', onReady);
 xhr.addEventListener('loadstart', onLoadStart);
 xhr.addEventListener('loadend', onLoadEnd);
+xhr.open('GET', 'https://neto-api.herokuapp.com/currency');
+xhr.send();
 
 function onReady() {
   if (xhr.status === 200 && xhr.readyState === 4) {
