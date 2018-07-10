@@ -1,7 +1,3 @@
 'use strict';
 
-function init() {
-  initModalUi();
-}
-
-document.addEventListener('DOMContentLoaded', init);
+document.addEventListener('DOMContentLoaded', initModalUi);
