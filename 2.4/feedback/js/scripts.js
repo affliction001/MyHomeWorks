@@ -3,6 +3,7 @@
 const inputs = document.querySelectorAll('input, textarea');
 const sendButton = document.querySelector('.contentform .button-contact');
 const zip = document.querySelector('input[name=zip]');
+const changeMessage = document.querySelector('#output .button-contact');
 
 // Проверяем все ли поля заполнены.
 
@@ -32,9 +33,30 @@ zip.addEventListener('input', function () {
   }
 });
 
-//
+// Отправляем данные сообщением.
 
-sendButton.addEventListener('click', function () {
+sendButton.addEventListener('click', function (event) {
+  event.preventDefault();
   document.querySelector('.contentform').classList.add('hidden');
   document.querySelector('#output').classList.remove('hidden');
+
+  writeInMessage(inputs);
 });
+
+// Изменяем сообщение.
+
+changeMessage.addEventListener('click', function () {
+  document.querySelector('.contentform').classList.remove('hidden');
+  document.querySelector('#output').classList.add('hidden');
+});
+
+// Записываем введенные в поля данные в сообщение для отправки.
+
+function writeInMessage(elements) {
+  Array.from(elements).forEach(function (element) {
+    const outElement = document.querySelector(`#output #${element.name}`);
+    if (outElement) {
+      outElement.value = element.value;
+    }
+  });
+}
