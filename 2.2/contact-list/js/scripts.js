@@ -8,11 +8,7 @@ function init() {
 
   contacts.forEach((contact) => {
     let listHTML = '';
-
-    contacts.forEach((contact) => {
-      listHTML += `<li data-email="${contact.email}" data-phone="${contact.phone}"><strong>${contact.name}</strong></li>`;
-    });
-
+    listHTML += `<li data-email="${contact.email}" data-phone="${contact.phone}"><strong>${contact.name}</strong></li>`;
     contactListDom.innerHTML = listHTML;
   });
 }
