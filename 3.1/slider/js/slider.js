@@ -21,10 +21,18 @@ function moveSlide(event) {
 
   switch (event.target.dataset.action) {
     case 'next':
-      activatedSlide = currentSlide.nextElementSibling;
+      if (next.classList.contains('disabled')) {
+        activatedSlide = currentSlide;
+      } else {
+        activatedSlide = currentSlide.nextElementSibling;
+      }
       break;
     case 'prev':
-      activatedSlide = currentSlide.previousElementSibling;
+      if (prev.classList.contains('disabled')) {
+        activatedSlide = currentSlide;
+      } else {
+        activatedSlide = currentSlide.previousElementSibling;
+      }
       break;
     case 'first':
       activatedSlide = slides.firstElementChild;
@@ -44,28 +52,20 @@ function checkForDisable(element) {
   if (element.nextElementSibling) {
     if (next.classList.contains('disabled')) {
       next.classList.remove('disabled');
-      next.addEventListener('click', moveSlide);
       last.classList.remove('disabled');
-      last.addEventListener('click', moveSlide);
     }
   } else {
     next.classList.add('disabled');
-    next.removeEventListener('click', moveSlide);
     last.classList.add('disabled');
-    last.removeEventListener('click', moveSlide);
   }
 
   if (element.previousElementSibling) {
     if (prev.classList.contains('disabled')) {
       prev.classList.remove('disabled');
-      prev.addEventListener('click', moveSlide);
       first.classList.remove('disabled');
-      first.addEventListener('click', moveSlide);
     }
   } else {
     prev.classList.add('disabled');
-    prev.removeEventListener('click', moveSlide);
     first.classList.add('disabled');
-    first.removeEventListener('click', moveSlide);
   }
 }
