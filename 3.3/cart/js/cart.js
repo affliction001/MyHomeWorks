@@ -150,15 +150,14 @@ function createColorNode(title, type, code, isAvailable) {
   const available = isAvailable ? 'available' : 'soldout';
   const disabled = isAvailable ? '' : 'disabled';
 
-  let node =
-   `<div data-value="${type}" class="swatch-element color ${type} ${available}">
-      <div class="tooltip">${title}</div>
-      <input quickbeam="color" id="swatch-1-${type}" type="radio" name="color" value="${type}" ${disabled}>
-      <label for="swatch-1-${type}" style="border-color: red;">
-        <span style="background-color: ${code};"></span>
-        <img class="crossed-out" src="https://neto-api.herokuapp.com/hj/3.3/cart/soldout.png?10994296540668815886">
-      </label>
-    </div>`;
+  let node = `<div data-value="${type}" class="swatch-element color ${type} ${available}">
+                <div class="tooltip">${title}</div>
+                <input quickbeam="color" id="swatch-1-${type}" type="radio" name="color" value="${type}" ${disabled}>
+                <label for="swatch-1-${type}" style="border-color: red;">
+                  <span style="background-color: ${code};"></span>
+                  <img class="crossed-out" src="https://neto-api.herokuapp.com/hj/3.3/cart/soldout.png?10994296540668815886">
+                </label>
+              </div>`;
 
   return node;
 }
@@ -167,29 +166,27 @@ function createSizeNode(title, type, isAvailable) {
   const available = isAvailable ? 'available' : 'soldout';
   const disabled = isAvailable ? '' : 'disabled';
 
-  let node =
-    `<div data-value="${type}" class="swatch-element plain ${type} ${available}">
-      <input id="swatch-0-${type}" type="radio" name="size" value="${type}" ${disabled}>
-      <label for="swatch-0-${type}">
-        ${title}
-        <img class="crossed-out" src="https://neto-api.herokuapp.com/hj/3.3/cart/soldout.png?10994296540668815886">
-      </label>
-    </div>`;
+  let node = `<div data-value="${type}" class="swatch-element plain ${type} ${available}">
+                <input id="swatch-0-${type}" type="radio" name="size" value="${type}" ${disabled}>
+                <label for="swatch-0-${type}">
+                  ${title}
+                  <img class="crossed-out" src="https://neto-api.herokuapp.com/hj/3.3/cart/soldout.png?10994296540668815886">
+                </label>
+              </div>`;
 
   return node;
 }
 
 function createSnippetProductNode(id, pic, title, quantity, price) {
-  let node =
-   `<div class="quick-cart-product quick-cart-product-static" id="quick-cart-product-${id}" style="opacity: 1;">
-      <div class="quick-cart-product-wrap">
-        <img src="${pic}" title="${title}">
-        <span class="s1" style="background-color: #000; opacity: .5">$${price}</span>
-        <span class="s2"></span>
-      </div>
-      <span class="count hide fadeUp" id="quick-cart-product-count-${id}">${quantity}</span>
-      <span class="quick-cart-product-remove remove" data-id="${id}"></span>
-    </div>`;
+  let node = `<div class="quick-cart-product quick-cart-product-static" id="quick-cart-product-${id}" style="opacity: 1;">
+                <div class="quick-cart-product-wrap">
+                  <img src="${pic}" title="${title}">
+                  <span class="s1" style="background-color: #000; opacity: .5">$${price}</span>
+                  <span class="s2"></span>
+                </div>
+                <span class="count hide fadeUp" id="quick-cart-product-count-${id}">${quantity}</span>
+                <span class="quick-cart-product-remove remove" data-id="${id}"></span>
+              </div>`;
 
   return node;
 }
@@ -197,13 +194,12 @@ function createSnippetProductNode(id, pic, title, quantity, price) {
 function createSnippetCartNode(allPrice, isOpen) {
   let open = isOpen ? 'open' : '';
 
-  let node =
-   `<a id="quick-cart-pay" quickbeam="cart-pay" class="cart-ico ${open}">
-      <span>
-        <strong class="quick-cart-text">Оформить заказ<br></strong>
-        <span id="quick-cart-price">$${allPrice}</span>
-      </span>
-    </a>`;
+  let node = `<a id="quick-cart-pay" quickbeam="cart-pay" class="cart-ico ${open}">
+                <span>
+                  <strong class="quick-cart-text">Оформить заказ<br></strong>
+                  <span id="quick-cart-price">$${allPrice}</span>
+                </span>
+              </a>`;
 
   return node;
 }
