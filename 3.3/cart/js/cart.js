@@ -3,10 +3,12 @@
 const colorsContainer = document.querySelector('#colorSwatch');
 const sizesContainer = document.querySelector('#sizeSwatch');
 const cartContainer = document.querySelector('#quick-cart');
+const formButton = document.querySelector('#AddToCart');
 
 getColors();
 getSizes();
 getCart();
+addProductInCart();
 
 function getColors() {
   const xhr = new XMLHttpRequest();
@@ -79,6 +81,23 @@ function getCart() {
     deleteProductFromCart();
   });
   xhr.send();
+}
+
+function addProductInCart() {
+  formButton.addEventListener('click', function(e) {
+    e.preventDefault();
+
+    const form = document.querySelector('#AddToCartForm');
+    const formData = new FormData(form);
+    formData.append('productId', form.dataset.productId);
+
+    const xhr = new XMLHttpRequest();
+    xhr.open('POST', 'https://neto-api.herokuapp.com/cart');
+    xhr.addEventListener('load', function(e) {
+      getCart();
+    });
+    xhr.send(formData);
+  });
 }
 
 function saveColors(colors) {
@@ -170,16 +189,22 @@ function createSnippetCartNode(allPrice, isOpen) {
 function deleteProductFromCart() {
   const removeButton = document.querySelector('#quick-cart .remove');
 
-  removeButton.addEventListener('click', function(e) {
-    const removeProduct = {};
-    removeProduct.productId = e.target.dataset.id;
+  if (removeButton) {
+    removeButton.addEventListener('click', function(e) {
+      e.preventDefault();
 
-    const xhr = new XMLHttpRequest();
-    xhr.open('POST', 'https://neto-api.herokuapp.com/cart/remove');
-    xhr.setRequestHeader('Content-Type', 'application/json');
-    xhr.addEventListener('load', function(e) {
-      console.log(JSON.parse(xhr.responseText));
+      const form = new FormData();
+      form.append('productId', e.target.dataset.id);
+
+      const xhr = new XMLHttpRequest();
+      xhr.open('POST', 'https://neto-api.herokuapp.com/cart/remove');
+      xhr.addEventListener('load', function(e) {
+        getCart();
+      });
+      xhr.send(form);
     });
-    xhr.send(JSON.stringify(removeProduct));
-  });
+  }
 }
+
+
+
