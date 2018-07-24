@@ -1,15 +1,34 @@
 'use strict';
 
-function callback(obj) {
-  document.querySelector('[data-wallpaper]').src = obj.wallpaper;
-  document.querySelector('[data-username]').textContent = obj.username;
-  document.querySelector('[data-description]').textContent = obj.description;
-  document.querySelector('[data-pic]').src = obj.pic;
-  document.querySelector('[data-tweets]').textContent = obj.tweets;
-  document.querySelector('[data-followers]').textContent = obj.followers;
-  document.querySelector('[data-following]').textContent = obj.following;
+const twittUrl = 'https://neto-api.herokuapp.com/twitter/jsonp';
+
+function publishProfile(profile) {
+  document.querySelector('[data-wallpaper]').src = profile.wallpaper;
+  document.querySelector('[data-username]').textContent = profile.username;
+  document.querySelector('[data-description]').textContent = profile.description;
+  document.querySelector('[data-pic]').src = profile.pic;
+  document.querySelector('[data-tweets]').textContent = profile.tweets;
+  document.querySelector('[data-followers]').textContent = profile.followers;
+  document.querySelector('[data-following]').textContent = profile.following;
 }
 
-const scriptNode = document.createElement('script');
-scriptNode.src = 'https://neto-api.herokuapp.com/twitter/jsonp';
-document.querySelector('body').appendChild(scriptNode);
+function loadData(url) {
+  const functionName = randName();
+  return new Promise((done, fail) => {
+    window[functionName] = done;
+    const script = document.createElement('script');
+    script.src = `${url}?jsonp=${functionName}`;
+    document.body.appendChild(script);
+  });
+}
+
+function randName() {
+  let superName = `f${Math.round(Math.random() * 10000)}u${Math.round(Math.random()
+          * 10000)}n${Math.round(Math.random() * 10000)}c${Math.round(Math.random()
+          * 10000)}t${Math.round(Math.random() * 10000)}i${Math.round(Math.random()
+          * 10000)}o${Math.round(Math.random() * 10000)}n`;
+  return superName;
+}
+
+loadData(twittUrl)
+  .then(publishProfile);
