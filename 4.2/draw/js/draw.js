@@ -30,6 +30,11 @@ canvas.addEventListener('mouseup', function(e) {
   ctx.beginPath();
 });
 
+canvas.addEventListener('mouseleave', function(e) {
+  isMouseDown = false;
+  ctx.beginPath();
+});
+
 canvas.addEventListener('mousemove', e => {
   let x = e.clientX;
   let y = e.clientY;
